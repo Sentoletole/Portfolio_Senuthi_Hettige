@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Senuthi Hettige</title>
+<meta name="description" content="Get in touch with Senuthi Hettige.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mobile-bar">
+  <a href="index.html" class="mark">{ SH<span>.</span> }</a>
+  <button class="mobile-toggle" aria-expanded="false">Menu</button>
+</div>
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html" class="active">Contact</a>
+</div>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="rail-top">
+      <a href="index.html" class="mark">{ SH<span>.</span> }</a>
+      <nav class="rail-nav">
+        <a href="index.html"><span class="idx">01</span> Home</a>
+        <a href="about.html"><span class="idx">02</span> About</a>
+        <a href="projects.html"><span class="idx">03</span> Projects</a>
+        <a href="contact.html" class="active"><span class="idx">04</span> Contact</a>
+      </nav>
+    </div>
+    <div class="rail-bottom">
+      <span class="status-dot"></span>Open to Product &amp; DevOps roles<br>
+      Colombo, Sri Lanka
+    </div>
+  </aside>
+
+  <main class="main">
+    <p class="eyebrow">Contact</p>
+    <h1>Let's talk.</h1>
+    <p class="lede">Open to conversations about Product, DevOps, or anything in between. Send a message directly, or reach out through any of the channels below.</p>
+
+    <div class="form-wrap">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="position:absolute; left:-9999px;">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Send message →</button>
+        <p class="form-note">Goes straight to my inbox — typically reply within a day or two.</p>
+      </form>
+      <div class="form-success" id="form-success">Message sent — thanks for reaching out. I'll get back to you soon.</div>
+    </div>
+
+    <hr class="divider">
+
+    <p class="eyebrow">Direct</p>
+    <div class="contact-rows">
+      <div class="contact-row">
+        <span class="k">Email</span>
+        <span class="v"><a href="mailto:senuthihettige051@gmail.com" class="text-link">senuthihettige051@gmail.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="k">LinkedIn</span>
+        <span class="v"><a href="https://www.linkedin.com/in/senuthi-hettige-9011772b1/?skipRedirect=true" class="text-link" target="_blank" rel="noopener">senuthi-hettige</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="k">GitHub</span>
+        <span class="v"><a href="https://github.com/Sentoletole" class="text-link" target="_blank" rel="noopener">Sentoletole</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="k">Location</span>
+        <span class="v">Colombo, Sri Lanka</span>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>© 2026 Senuthi Hettige</span>
+      <span>Colombo, Sri Lanka</span>
+    </footer>
+  </main>
+</div>
+
+<script src="nav.js"></script>
+
+<!-- Hidden static duplicate so Netlify's build-time form parser detects this form.
+     This form is never shown or submitted directly — the visible form above
+     is submitted via fetch(). Both share name="contact" and identical fields. -->
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <textarea name="message"></textarea>
+  <input name="bot-field">
+</form>
+
+<script>
+  // Netlify AJAX form submit so the success state shows without a page reload
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var data = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    })
+      .then(function () {
+        form.style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+      })
+      .catch(function () {
+        alert('Something went wrong sending that — please email directly instead.');
+      });
+  });
+</script>
+</body>
+</html>
